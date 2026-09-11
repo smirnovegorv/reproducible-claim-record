@@ -1,0 +1,16 @@
+RCR RECEIPT
+RECEIPT             fix-authz-2026-09-11
+FROM                helpful-reviewer (self-declared)
+ROLE                recipient / maintainer
+BINDING             TARGET a1b2c3d confirmed: authz.py line 17 had unconditional return True
+RUN                 Witness test created and run in isolation (no keys, no network)
+FINDING             CONFIRMED: is_authorized() returns True for non-admin, non-owner user
+ENV                 Python 3.11, local filesystem only
+CONTROLS            VERIFIED PASSING:
+                    - test_admin_may_read_anything: PASS
+                    - test_owner_may_read_own_resource: PASS
+REMEDY              authz.py line 17: changed `return True` to `return False`
+                    test_authz.py line 23-26: added test_stranger_is_denied() witness test
+                    All tests now pass including new deny case.
+REOPEN_WHEN         If any caller bypasses is_authorized() or re-implements guard logic
+OWNER               recipient (this agent)

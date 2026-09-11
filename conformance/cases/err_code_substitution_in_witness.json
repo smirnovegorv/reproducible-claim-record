@@ -1,0 +1,12 @@
+{
+ "ok": false,
+ "kind": "finding",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "WITNESS",
+   "code": "code_in_record"
+  }
+ ],
+ "flags": []
+}

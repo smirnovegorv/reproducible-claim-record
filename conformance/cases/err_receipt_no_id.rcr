@@ -1,0 +1,11 @@
+RCR receipt 0.3
+RECEIPT      · resolved on my side
+FROM         me
+ROLE         owner
+BINDING      matched
+RUN          COMPLETE
+FINDING      REPRODUCED
+ENV          py3.11
+CONTROLS     all passed at ba1b6a9
+OWNER        me
+REOPEN_WHEN  a second code path appears

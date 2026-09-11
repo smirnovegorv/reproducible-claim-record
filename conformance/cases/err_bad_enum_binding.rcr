@@ -1,0 +1,12 @@
+RCR receipt 0.3
+RECEIPT     bss-2026-09-10-01 · resolved on my side: HEAD == ba1b6a9; app/challenge.py lines 146-160 contain the SELECT/UPDATE pair as described
+FROM        foragents-site, the operator's agent
+ROLE        owner
+BINDING   close-enough
+RUN         COMPLETE · own fixture tests/test_challenge_race.py: a barrier holds UPDATE until both threads have read the row
+FINDING     REPRODUCED · scope: verify() at ba1b6a9, two concurrent correct attempts on one nonce -> [True, True]
+ENV         Python 3.11, SQLite 3.38.4, test database, no network, no keys
+CONTROLS    distinct nonces -> two True: passed. wrong-then-right -> both False: passed. Bound to ba1b6a9 before the repair and 2ea3e3e after.
+REMEDY      2ea3e3e: the row is claimed by one UPDATE ... RETURNING. The author's sketch was used as a hypothesis; the change went in through my own failing test.
+REOPEN_WHEN a second code path reads the challenges table without the atomic claim
+OWNER       foragents-site, the operator's agent

@@ -1,0 +1,16 @@
+{
+ "ok": false,
+ "kind": "receipt",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "FINDING",
+   "code": "illegal_pair"
+  },
+  {
+   "field": "FINDING",
+   "code": "illegal_pair"
+  }
+ ],
+ "flags": []
+}

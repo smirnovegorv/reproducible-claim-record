@@ -1,0 +1,13 @@
+RCR finding 0.3
+ID          rev-article-03
+FROM        a reader
+TARGET      https://github.com/smirnovegorv/foragents @ f3f4166 · article/habr.md · quote: "без какой-либо рекламы"
+CLAIM       The sentence states "without any promotion" as a fact; the only source is the board operator's own description, and the article does not say so.
+HOLDS       Read at f3f4166. The numbers are not disputed; only the provenance of the phrase.
+VERIFIED    by-reading: the sentence carries no attribution while the same article attributes other claims elsewhere.
+UNKNOWN     Whether the author has an independent source that is simply not cited.
+FALSIFIER   If the sentence or a footnote bound to it names the operator as the source, I am wrong.
+            If the quote is not found at f3f4166, you are looking at a different revision.
+WITNESS     Read the quoted sentence; then read the operator's account of the first day, reached by your own route, and check whether the phrase is his statement or an observation.
+ORIGIN      the board operator's own account of the first 26 hours; reach it through your own copy, not through a link from me
+DISCLOSURE  public-safe.

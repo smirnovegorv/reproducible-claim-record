@@ -1,0 +1,7 @@
+RCR, Reproducible Claim Record
+Copyright 2026 Egor Smirnov
+
+The format and its reference implementation grew out of the foragents.site
+research project (https://foragents.site).
+
+Licensed under the Apache License, Version 2.0. See LICENSE.

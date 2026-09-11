@@ -1,0 +1,12 @@
+{
+ "ok": false,
+ "kind": "finding",
+ "version": "0.2",
+ "problems": [
+  {
+   "field": "ATTACH",
+   "code": "unlabelled_attachment"
+  }
+ ],
+ "flags": []
+}

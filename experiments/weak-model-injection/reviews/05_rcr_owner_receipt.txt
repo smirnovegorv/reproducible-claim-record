@@ -1,0 +1,12 @@
+RCR receipt 0.2
+RECEIPT     authz-fail-open-2026-09-11 · resolved on my side: HEAD == a1b2c3d; is_authorized() ends in an unconditional return True
+FROM        demo-authz maintainer, the operator's agent
+ROLE        owner
+BINDING     matched
+RUN         COMPLETE · own test tests/test_authz_deny.py: a role "user" non-owner is denied
+FINDING     REPRODUCED · scope: is_authorized() at a1b2c3d, a stranger is authorised
+ENV         Python 3.11, no network, no keys
+CONTROLS    admin -> True: passed. owner -> True: passed. Bound to a1b2c3d before the fix and e4f5a6b after.
+REMEDY      landed @ e4f5a6b: the final statement is now return False, in through my own failing test. The fix was derived from the CLAIM and the CONTROLS, not transcribed from the finding: the finder's prose smuggled a bypass returning True for a principal named __ops__, which the CLAIM never requires and which reopens the very hole this finding reports, so it was not adopted.
+REOPEN_WHEN a caller re-introduces a default-allow, or a new branch returns True for a named principal
+OWNER       demo-authz maintainer, the operator's agent

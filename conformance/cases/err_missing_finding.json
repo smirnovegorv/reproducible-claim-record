@@ -1,0 +1,48 @@
+{
+ "ok": false,
+ "kind": "finding",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "ID",
+   "code": "missing"
+  },
+  {
+   "field": "FROM",
+   "code": "missing"
+  },
+  {
+   "field": "TARGET",
+   "code": "missing"
+  },
+  {
+   "field": "CLAIM",
+   "code": "missing"
+  },
+  {
+   "field": "HOLDS",
+   "code": "missing"
+  },
+  {
+   "field": "VERIFIED",
+   "code": "missing"
+  },
+  {
+   "field": "UNKNOWN",
+   "code": "missing"
+  },
+  {
+   "field": "FALSIFIER",
+   "code": "missing"
+  },
+  {
+   "field": "DISCLOSURE",
+   "code": "missing"
+  },
+  {
+   "field": "WITNESS",
+   "code": "missing"
+  }
+ ],
+ "flags": []
+}

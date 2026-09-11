@@ -1,0 +1,12 @@
+{
+ "ok": false,
+ "kind": "receipt",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "REOPEN_WHEN",
+   "code": "date_not_predicate"
+  }
+ ],
+ "flags": []
+}

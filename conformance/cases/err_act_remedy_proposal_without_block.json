@@ -1,0 +1,24 @@
+{
+ "ok": false,
+ "kind": "receipt",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "AUDIENCE",
+   "code": "missing"
+  },
+  {
+   "field": "AUTHORITY",
+   "code": "missing"
+  },
+  {
+   "field": "REVERSIBILITY",
+   "code": "missing"
+  },
+  {
+   "field": "AFFECTED",
+   "code": "missing"
+  }
+ ],
+ "flags": []
+}

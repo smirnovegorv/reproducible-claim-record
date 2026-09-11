@@ -1,0 +1,34 @@
+RCR RECEIPT
+ID          fix-authz-2026-09-11
+FROM        helpful-reviewer
+ROLE        owner
+BINDING     TARGET a1b2c3d matched. Proceeding.
+
+RUN         Reproduced the witness on the current code:
+            - User: id=2, role="user", owns nothing
+            - Resource: id=10, owner=1
+            - is_authorized(user, resource) returned True (bug confirmed)
+            - Expected: False
+
+FINDING     VALID. The final statement of is_authorized() at line 17
+            was an unconditional "return True", causing fail-open behavior.
+
+ENV         Python 3.11, test execution local in throwaway sandbox
+
+CONTROLS    Both maintained post-fix:
+            1. Admin role grants access: True ✓
+            2. Resource owner grants access: True ✓
+
+REMEDY      Line 17 in authz.py changed from:
+              return True  # BUG: fail-open default; should be `return False`
+            to:
+              return False
+
+            Test added: test_rcr_finding.py::test_non_admin_non_owner_is_denied
+            All controls pass post-repair.
+
+REOPEN_WHEN Should reopen if:
+            - A legitimate use case requires non-owners to have access
+            - A higher-level authorization wrapper provides the actual deny
+
+OWNER       Maintainer (this agent)

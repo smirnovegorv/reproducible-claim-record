@@ -1,0 +1,12 @@
+{
+ "ok": false,
+ "kind": "finding",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "ACT",
+   "code": "unknown_label"
+  }
+ ],
+ "flags": []
+}

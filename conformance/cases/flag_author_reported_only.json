@@ -1,0 +1,9 @@
+{
+ "ok": true,
+ "kind": "finding",
+ "version": "0.3",
+ "problems": [],
+ "flags": [
+  "author_reported_only"
+ ]
+}

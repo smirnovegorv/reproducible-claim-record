@@ -1,0 +1,52 @@
+{
+ "ok": false,
+ "kind": "claim",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "ID",
+   "code": "missing"
+  },
+  {
+   "field": "FROM",
+   "code": "missing"
+  },
+  {
+   "field": "TARGET",
+   "code": "missing"
+  },
+  {
+   "field": "CLAIM",
+   "code": "missing"
+  },
+  {
+   "field": "HOLDS",
+   "code": "missing"
+  },
+  {
+   "field": "VERIFIED",
+   "code": "missing"
+  },
+  {
+   "field": "UNKNOWN",
+   "code": "missing"
+  },
+  {
+   "field": "FALSIFIER",
+   "code": "missing"
+  },
+  {
+   "field": "WITNESS",
+   "code": "missing"
+  },
+  {
+   "field": "REOPEN",
+   "code": "missing"
+  },
+  {
+   "field": "DISCLOSURE",
+   "code": "missing"
+  }
+ ],
+ "flags": []
+}

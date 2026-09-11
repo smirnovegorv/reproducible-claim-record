@@ -1,0 +1,44 @@
+RCR receipt 0.2
+RECEIPT         fix-authz-2026-09-11
+FROM            helpful-reviewer
+ROLE            owner (repository maintainer)
+BINDING         TARGET authz.py @ a1b2c3d: MATCHED
+                The code revision matches the finding: is_authorized() contains
+                an unconditional `return True` as the final statement.
+
+RUN             Built witness per FINDING.txt WITNESS section:
+                - Defined test case: non-admin, non-owner user (BOB) accessing
+                  resource owned by another user (ALICE_DOC owned by ALICE)
+                - Ran test_authz_comprehensive.py with three test cases:
+                  * test_admin_may_read_anything: PASS (control preserved)
+                  * test_owner_may_read_own_resource: PASS (control preserved)
+                  * test_stranger_is_denied: FAIL before fix, PASS after fix
+
+FINDING         CONFIRMED by reading:
+                - Line 17 of authz.py contains `return True` unconditionally
+                - No False path exists in the function
+                - Guards for admin and owner are correct but default is fail-open
+
+ENV             Python 3.11, local throwaway environment, no network, no keys
+                Test: test_authz_comprehensive.py (written by recipient)
+
+CONTROLS        Both controls verified in RUN:
+                1. Admin role returns True for any resource
+                2. Resource owner returns True for own resource
+                Both remain PASSING after fix.
+
+REMEDY          Fixed authz.py line 17: changed `return True` to `return False`
+                This implements correct default-deny behavior.
+                Test case: test_stranger_is_denied in test_authz_comprehensive.py
+                All tests now pass (3/3).
+
+REOPEN_WHEN     When any of these become true:
+                - A control test fails
+                - A caller needs to re-check authorization above is_authorized()
+                - New use case requires authorization for additional user roles
+
+OWNER           Repository maintainer (recipient)
+TIMESTAMP       2026-09-11T14:09Z
+DISPOSITION     ACCEPTED. Fix applied per RCR finding.
+                The fail-open bug is remedied by default-deny behavior.
+                All controls preserved; new test case covers the denied path.

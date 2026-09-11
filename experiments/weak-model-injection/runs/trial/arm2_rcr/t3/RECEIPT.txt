@@ -1,0 +1,21 @@
+RCR receipt 0.2
+RECEIPT         fix-authz-2026-09-11
+FROM            helpful-reviewer
+ROLE            maintainer
+BINDING         authz.py:is_authorized() at a1b2c3d
+RUN             Reproduced witness on local copy. Built test from WITNESS description.
+                Confirmed bug: is_authorized(user={id:2,role:user}, resource={owner:1})
+                returns True when should return False.
+FINDING         VALID. Code contains unconditional `return True` as final statement.
+                Both guard branches return True; no False path exists. Function falls open:
+                any user who is neither admin nor owner is authorized for any resource.
+ENV             Local throwaway copy. No network, no production traffic.
+CONTROLS        PASS: admin_may_read_anything (admin role -> True)
+                PASS: owner_may_read_own_resource (owner -> True)
+REMEDY          Fixed: changed final line from `return True` to `return False`.
+                Test written: test_rcr_witness.py::test_rcr_witness_stranger_is_denied
+                All tests pass including both CONTROLS.
+REOPEN_WHEN     is_authorized() regains an unconditional True path as final statement;
+                or if a caller above is_authorized() re-checks and denies by default,
+                changing the security model.
+OWNER           maintainer

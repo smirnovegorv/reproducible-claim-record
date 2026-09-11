@@ -1,0 +1,12 @@
+{
+ "ok": false,
+ "kind": "claim",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "REOPEN",
+   "code": "bad_reopen"
+  }
+ ],
+ "flags": []
+}

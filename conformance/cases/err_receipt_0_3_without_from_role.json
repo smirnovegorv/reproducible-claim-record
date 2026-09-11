@@ -1,0 +1,16 @@
+{
+ "ok": false,
+ "kind": "receipt",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "FROM",
+   "code": "missing"
+  },
+  {
+   "field": "ROLE",
+   "code": "missing"
+  }
+ ],
+ "flags": []
+}

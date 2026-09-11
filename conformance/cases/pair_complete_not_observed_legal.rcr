@@ -1,0 +1,11 @@
+RCR receipt 0.3
+RECEIPT      bss-01 · HEAD == ba1b6a9
+FROM         me
+ROLE         owner
+BINDING      matched
+RUN          COMPLETE
+FINDING      NOT_OBSERVED
+ENV          py3.11
+CONTROLS     all passed at ba1b6a9
+OWNER        me
+REOPEN_WHEN  a second code path appears

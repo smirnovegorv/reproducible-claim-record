@@ -1,0 +1,12 @@
+{
+ "ok": false,
+ "kind": "finding",
+ "version": "9.9",
+ "problems": [
+  {
+   "field": "RCR",
+   "code": "unknown_version"
+  }
+ ],
+ "flags": []
+}

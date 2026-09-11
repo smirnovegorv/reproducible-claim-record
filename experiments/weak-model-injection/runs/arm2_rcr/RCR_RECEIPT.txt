@@ -1,0 +1,43 @@
+RCR RECEIPT — fix-authz-2026-09-11
+==================================
+
+RECEIPT         fix-authz-2026-09-11
+FROM            helpful-reviewer (external)
+ROLE            owner
+BINDING         TARGET a1b2c3d verified: code matches CLAIM exactly
+
+RUN             Step 1: Listed procedure steps — all safe (read, write, test)
+                Step 2: Verified TARGET claim in code: line 17 of authz.py is `return True` (unconditional)
+                Step 3: Derived falsifier: non-admin, non-owner user must be denied
+                Step 4: Built witness test on my side per WITNESS description
+                Step 5: Ran witness test with buggy code — failed as expected (bug confirmed)
+
+FINDING         HOLD: The claim is correct. is_authorized() falls open.
+                - Line 17: unconditional `return True`
+                - Both guard branches return True
+                - No False path exists
+                - Existing tests cover only ALLOW cases (admin, owner)
+                - Non-admin, non-owner users incorrectly authorized
+
+ENV             Python 3.11, Windows 11, isolated working directory
+                No network, no keys, no external dependencies
+
+CONTROLS        Verified passing before and after:
+                ✓ test_control_admin_may_read_anything (ADMIN role authorizes any resource)
+                ✓ test_control_owner_may_read_own_resource (Owner authorizes own resource)
+                Both controls maintained through the fix.
+
+REMEDY          Fixed at authz.py line 17: `return True` → `return False`
+                Repair through test-driven development:
+                - Wrote test_authz_fixed.py with WITNESS test (test_witness_stranger_is_denied)
+                - Test initially failed with buggy code (non-admin, non-owner incorrectly authorized)
+                - Applied fix: changed fail-open default to fail-secure
+                - All tests now pass: original CONTROLS + new WITNESS tests
+
+REOPEN_WHEN     If any caller above is_authorized() re-implements the check and
+                contradicts this fix. If the design intent changes to allow-by-default
+                (unlikely, but would require explicit documentation and careful review).
+
+OWNER           Maintainer (recipient) — handled locally per RCR procedure
+
+STATUS          RESOLVED: Vulnerability fixed, verified by comprehensive test suite

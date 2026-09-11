@@ -1,0 +1,12 @@
+{
+ "ok": false,
+ "kind": "receipt",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "SUPERSEDES",
+   "code": "url_in_prose"
+  }
+ ],
+ "flags": []
+}

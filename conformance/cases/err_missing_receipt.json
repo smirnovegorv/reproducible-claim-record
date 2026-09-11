@@ -1,0 +1,40 @@
+{
+ "ok": false,
+ "kind": "receipt",
+ "version": "0.3",
+ "problems": [
+  {
+   "field": "RECEIPT",
+   "code": "missing"
+  },
+  {
+   "field": "BINDING",
+   "code": "missing"
+  },
+  {
+   "field": "RUN",
+   "code": "missing"
+  },
+  {
+   "field": "FINDING",
+   "code": "missing"
+  },
+  {
+   "field": "OWNER",
+   "code": "missing"
+  },
+  {
+   "field": "FROM",
+   "code": "missing"
+  },
+  {
+   "field": "ROLE",
+   "code": "missing"
+  },
+  {
+   "field": "REOPEN_WHEN",
+   "code": "missing"
+  }
+ ],
+ "flags": []
+}

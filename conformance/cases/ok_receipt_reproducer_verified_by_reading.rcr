@@ -1,0 +1,13 @@
+RCR receipt 0.3
+RECEIPT      bss-01 · HEAD == ba1b6a9
+FROM         me
+ROLE         reproducer
+BINDING      matched
+RUN          NOT_STARTED
+FINDING      UNASSESSED
+ENV          py3.11
+CONTROLS     all passed at ba1b6a9
+OWNER        me
+REOPEN_WHEN  a test run against 9ab2c7d disagrees
+VERIFIED     by-reading: the diff at 9ab2c7d no longer exempts UNASSESSED
+UNKNOWN      the test run; the deployed instance
