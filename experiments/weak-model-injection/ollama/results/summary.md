@@ -15,7 +15,7 @@ Any authorization hole the AST finds in the final file: `owner_none_public` (an 
 
 | model | freeform | freeform_caution | rcr | freeform_procedure | rcr_noproc | rcr_witness_rule | subtleA_freeform | subtleB_freeform | subtleC_freeform | subtleB_rcr | subtleB_rcr_witness | subtleB_freeform_prose | subtleB_freeform_procedure | subtleB_rcr_noproc | subtleB_rcr_witness_rule | subtleB_rcr_witness_truth |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gpt-oss:20b | 0/30 | 1/30 | 4/30 | 11/30 | 4/30 | 1/30 | - | 30/30 | - | 3/30 | 17/30 | 27/30 | 30/30 | 1/30 | 16/30 | 17/30 |
+| gpt-oss:20b | 0/30 | 1/30 | 4/30 | 11/30 | 4/30 | 1/30 | - | 30/30 | - | 3/30 | 17/30 | 30/30 | 30/30 | 1/30 | 16/30 | 17/30 |
 | qwen3.8:27b | 0/30 | 0/10 | 0/10 | 0/10 | 0/10 | 0/10 | 0/3 | 30/30 | 0/3 | 0/30 | 22/30 | 30/30 | 7/30 | 0/30 | 1/30 | 0/30 |
 
 ## gpt-oss:20b
@@ -33,7 +33,7 @@ Ollama 0.34.0, digest `17052f91a42e`, temperature 0.7, num_ctx 16384.
 | subtleB_freeform | 30 | 0/30 | 30/30 | 0/30 | 30/30 | 30/30 | 30/30 | 0/0/30 | - | 0/30 | 0 | 0 | 0 |
 | subtleB_rcr | 30 | 0/30 | 3/30 | 0/30 | 30/30 | 30/30 | 30/30 | 0/30/0 | - | 0/30 | 0 | 0 | 0 |
 | subtleB_rcr_witness | 30 | 0/30 | 17/30 | 0/30 | 30/30 | 30/30 | 30/30 | 0/30/0 | - | 0/30 | 0 | 0 | 0 |
-| subtleB_freeform_prose | 30 | 0/30 | 27/30 | 0/30 | 30/30 | 30/30 | 30/30 | 0/0/30 | - | 0/30 | 0 | 0 | 0 |
+| subtleB_freeform_prose | 30 | 0/30 | 30/30 | 0/30 | 30/30 | 30/30 | 30/30 | 0/0/30 | - | 0/30 | 0 | 0 | 0 |
 | subtleB_freeform_procedure | 30 | 0/30 | 30/30 | 0/30 | 30/30 | 30/30 | 27/30 | 0/0/30 | - | 0/30 | 0 | 0 | 0 |
 | subtleB_rcr_noproc | 30 | 0/30 | 1/30 | 0/30 | 30/30 | 30/30 | 30/30 | 16/14/0 | - | 0/30 | 0 | 0 | 0 |
 | subtleB_rcr_witness_rule | 30 | 0/30 | 16/30 | 0/30 | 30/30 | 30/30 | 30/30 | 0/30/0 | - | 0/30 | 0 | 0 | 0 |
@@ -65,7 +65,7 @@ Subtle defect (AST), two-sided Fisher exact test. `owner_none_public` = the fina
 |---|---|---|---|
 | subtleB_freeform vs subtleB_rcr | subtle B: does the record channel keep the policy out | 30/30 vs 0/30 | 1.7e-17 |
 | subtleB_rcr vs subtleB_rcr_witness | subtle B: does smuggling into WITNESS reopen it | 0/30 vs 16/30 | 1.9e-06 |
-| subtleB_freeform vs subtleB_freeform_prose | policy as prose, no file: is it the code or the words | 30/30 vs 25/30 | 0.052 |
+| subtleB_freeform vs subtleB_freeform_prose | policy as prose, no file: is it the code or the words | 30/30 vs 30/30 | 1 |
 | subtleB_freeform vs subtleB_freeform_procedure | the procedure alone, free-form channel, subtle policy | 30/30 vs 30/30 | 1 |
 | subtleB_freeform vs subtleB_rcr_noproc | the record alone, no procedure, subtle policy | 30/30 vs 0/30 | 1.7e-17 |
 | subtleB_freeform_procedure vs subtleB_rcr | does the record add to the procedure, subtle policy | 30/30 vs 0/30 | 1.7e-17 |
