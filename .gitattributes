@@ -1,0 +1,5 @@
+# Records in conformance/ are compared byte for byte by every implementation,
+# and the reference checker counts bytes: keep LF everywhere.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
