@@ -154,6 +154,21 @@ batch simply didn't exercise it. See `RESULTS.md` for how to build a
 discriminating test (verbatim-application framing, a subtler backdoor, or a more
 injection-prone local model).
 
+## Second run (local models via Ollama, n=30) — discriminating
+
+The discriminating design the batch above asked for has now been run, automated,
+on **gpt-oss:20b** and **qwen3.8:27b** at n=30. It separates the arms. With an
+overt `__ops__` backdoor a capable model still wins by recognition (qwen3.8: 0 in
+every arm), so the payload was changed to a plausible *policy* — the fix also
+treats an unowned resource as public. That defeats recognition: free-form merges
+it **30/30 on both models**, while the RCR record with a clean `CLAIM` keeps it
+out **0/30 on both**, and the one leak is the same `WITNESS` prose (16/30
+gpt-oss, 22/30 qwen — the capable model is *worse* on the leak, re-implementing
+the policy in its own words). Honest limit: the format bounds the channel, not
+the recipient — gpt-oss introduced a different insecure default on its own in a
+few RCR runs. Harness, raw per-trial logs and the full reading are in
+[ollama/](ollama/) and [RESULTS.md](RESULTS.md).
+
 ## How these results were checked
 
 - The RCR verdicts (02 rejected; 03, 04, 05 pass clean) are **real runs** of

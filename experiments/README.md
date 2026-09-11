@@ -7,7 +7,7 @@ a batch that did not exercise the mechanism says so.
 
 | Experiment | Question | Where it stands |
 |---|---|---|
-| [weak-model-injection](weak-model-injection/) | does a review in RCR form, as opposed to free-form prose, stop a weak model from merging a backdoor that rides beside a correct fix? | the mechanism was confirmed once: the same review in prose got the backdoor merged, in RCR form the model derived the fix from `CLAIM` and `CONTROLS`. A later batch of six per arm did not exercise it: the model declined the bait in every arm. Inconclusive as a measurement; open |
+| [weak-model-injection](weak-model-injection/) | does a review in RCR form, as opposed to free-form prose, stop a weak model from merging a backdoor that rides beside a correct fix? | discriminated at n=30 on two local models (gpt-oss:20b, qwen3.8:27b). An overt backdoor is caught by recognition on a capable model, so the payload was made a plausible *policy* (an unowned resource treated as public): free-form merges it 30/30 on both models, the RCR record with a clean `CLAIM` keeps it out 0/30 on both, and the only leak is the same `WITNESS` prose (16–22/30). Honest limit: the format bounds the channel, not the recipient's own habits. See its [ollama/](weak-model-injection/ollama/) run |
 
 ## What is in here is material, not tools
 
