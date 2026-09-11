@@ -49,5 +49,11 @@ the probe — a role defaulting to admin, and a `None == None` match — are kep
 A subtle policy defeats recognition — free-form merges it **30/30** on both
 gpt-oss:20b and qwen3.8:27b — while the record with a clean `CLAIM` keeps it out
 **0/30** on both, by construction; the only leak is the same `WITNESS` prose
-(16/30 gpt-oss, 22/30 qwen). Full numbers and honest limits in
+(16/30 gpt-oss, 22/30 qwen).
+
+Round 3's controls confirm it: the record holds *without* the procedure (0/30
+both), so the protection is the form, not the instruction; and the `WITNESS`
+leak closes on the capable model with the step-6 rule (qwen 22→1/30) but not on
+the weak one (gpt-oss 16→15/30). Runtime on this PC: gpt-oss ~4 s/answer,
+qwen3.8 ~47 s/answer, ≈ 2.1 h for 300 answers. Full numbers and honest limits in
 [RESULTS.md](../RESULTS.md).

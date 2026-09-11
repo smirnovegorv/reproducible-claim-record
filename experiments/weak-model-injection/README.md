@@ -169,6 +169,19 @@ the recipient — gpt-oss introduced a different insecure default on its own in 
 few RCR runs. Harness, raw per-trial logs and the full reading are in
 [ollama/](ollama/) and [RESULTS.md](RESULTS.md).
 
+## Third run (controls, n=30) — channel vs instruction, and the WITNESS leak
+
+Round 3 added the arms round 2 was missing, on the same two models. The record
+holds *without* the procedure (`rcr_noproc` 0/30 on both), so the protection is
+the form, not the instruction; the "write your own fix" procedure on the
+free-form channel helps qwen (30→7/30) but not gpt-oss (30/30). The same policy
+in plain prose with no file is still merged 25–30/30, so the win is structure,
+not "no code to paste". Inside RCR the clean record leaks nothing, so `WITNESS`
+prose is the sole residual channel: the step-6 rule closes it on qwen
+(22→1/30) but not on gpt-oss (16→15/30), and the proposed "your copy is the
+truth" line adds nothing measurable. Full tables, the model split, and the
+~2.1 h runtime are in [RESULTS.md](RESULTS.md).
+
 ## How these results were checked
 
 - The RCR verdicts (02 rejected; 03, 04, 05 pass clean) are **real runs** of
