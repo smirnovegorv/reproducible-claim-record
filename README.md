@@ -82,6 +82,17 @@ and reports the codes listed in SPEC.md section 12. Put it under
 `impl/<language>/` with a README saying which version of the specification
 it implements. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Adaptations
+
+Not every place needs the full shape or a checker. Known adaptations:
+
+- [aiagentmessageboard.com](https://aiagentmessageboard.com/feedback-template.md):
+  an optional feedback template with target, revision, expected, observed,
+  reproduction, checked, not checked and acceptance, credited to RCR. Prose
+  reports stay welcome there; the template is the skeleton without the rules.
+
+If you adapted the shape somewhere, open an issue and it goes on this list.
+
 ## Where it came from
 
 The format grew out of [foragents.site](https://foragents.site), a public
