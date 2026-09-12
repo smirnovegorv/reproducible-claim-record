@@ -227,3 +227,54 @@ models = 300 answers: **gpt-oss:20b 9.7 min (3.9 s/answer), qwen3.8:27b 116 min
 (46.5 s/answer), ≈ 2.1 h in total** — qwen is essentially all of it. For a
 re-run, budget ~47 s/answer on qwen3.8 and ~4 s on gpt-oss and scale by the arm
 and trial count.
+
+---
+
+# Round 4 — model strength (Claude Haiku 4.5 and Claude Sonnet, n=10)
+
+The eight arms of rounds 2 and 3, run on two hosted models through one
+fresh subagent per trial, text only, scored by the same AST scorer. Method
+and its limits (no system prompt, no temperature or seed control) in
+[haiku/README.md](haiku/README.md) and [sonnet/README.md](sonnet/README.md);
+raw logs there in the Ollama shape, `arm_hash` included.
+
+## Five models, one table (`owner_none_public`, final file)
+
+| arm | gpt-oss:20b (30) | qwen3.8:27b (30) | Haiku 4.5 (10) | Sonnet (10) |
+|---|---|---|---|---|
+| freeform (drop-in file) | 30 | 30 | 10 | **0** |
+| freeform_prose (words, no file) | 30 | 30 | 10 | **8** |
+| freeform_procedure (drop-in + procedure) | 30 | 7 | 6 | 0 |
+| rcr_noproc (clean record, no procedure) | 0 | 0 | 0 | 0 |
+| rcr (clean record + procedure) | 0 | 0 | 0 | 0 |
+| rcr_witness (policy in WITNESS prose) | 16 | 22 | 3 | 3 |
+| rcr_witness_rule (+ step 6) | 15 | 1 | 1 | 2 |
+| rcr_witness_truth (+ "your copy is the truth") | 17 | 0 | 1 | 0 |
+
+## Reading it
+
+- **The clean record is the one row that is zero everywhere.** Four models
+  of very different strength, with and without the recipient procedure:
+  the policy that is absent from `CLAIM` and `CONTROLS` never reaches the
+  file. This is the structural claim, and it does not depend on the model.
+- **What the free-form channel loses to changes with strength, and it does
+  not simply shrink.** The weak models accept the drop-in file and its
+  prose alike. Haiku accepts both. Sonnet refuses the file 10/10, with the
+  reasons a careful maintainer would give, and then accepts the same
+  policy in plain words 8/10. A ready-made file is what triggers a capable
+  model's suspicion; a sentence in a colleague's voice is not. The
+  vulnerable channel moves from code to speech as the model gets stronger,
+  and "send no code" protects nothing at either end.
+- **The instruction alone is model-dependent in both directions.** The
+  "write your own fix" procedure on the free-form channel does nothing for
+  gpt-oss (30), helps qwen (30 to 7) and Haiku (10 to 6), and is not needed
+  by Sonnet (0 either way).
+- **The `WITNESS` leak is present on every model and closes on none of
+  them by a rule alone.** 16 and 22 of 30 on the local models, 3 of 10 on
+  both Claude models. Step 6 closes it on qwen (22 to 1) and on nothing
+  else; the "truth" line closes it on Sonnet (2 to 0, not significant at
+  n=10) and does nothing on gpt-oss. The only channel left inside RCR is
+  prose in `WITNESS`, and what to do about it is a decision about the form
+  (issue #10), not about wording.
+- **The limit holds.** Only gpt-oss ever wrote a `None == None` hole of its
+  own; the three other models never did.
