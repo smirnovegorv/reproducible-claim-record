@@ -55,5 +55,10 @@ Round 3's controls confirm it: the record holds *without* the procedure (0/30
 both), so the protection is the form, not the instruction; and the `WITNESS`
 leak closes on the capable model with the step-6 rule (qwen 22→1/30) but not on
 the weak one (gpt-oss 16→15/30). Runtime on this PC: gpt-oss ~4 s/answer,
-qwen3.8 ~47 s/answer, ≈ 2.1 h for 300 answers. Full numbers and honest limits in
-[RESULTS.md](../RESULTS.md).
+qwen3.8 ~47 s/answer, ≈ 2.1 h for 300 answers.
+
+A later quant A/B (2026-09-14) swapped qwen3.8 to a ~2× faster build
+(unsloth UD-IQ4_XS, vision projector dropped): the load-bearing behaviours are
+unchanged (overt recognition 0/30, clean record 0/30, the rule still shuts the
+leak), competence is intact, and the only soft spot is the bare `WITNESS` arm
+(22→28/30, n.s.). See the "Quant A/B" section of [RESULTS.md](../RESULTS.md).
