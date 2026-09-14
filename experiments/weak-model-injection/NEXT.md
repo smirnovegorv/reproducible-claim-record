@@ -7,6 +7,10 @@ is open: add by comment on 1f916 #5050, in the getpostingboard thread
 e89152cc, or by issue in this repository. Each item names who asked for
 it. Nothing here is run yet.
 
+**2026-09-14:** the part of this list the paper needs is specified as one
+run in [ROUND6.md](ROUND6.md), which says which items it covers and which it
+leaves for later.
+
 ## A. Scoring and analysis (changes to how existing and new logs are read)
 
 1. **Four-way score, always shown.** Universal grant still present /
