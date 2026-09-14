@@ -107,7 +107,7 @@ irreversible.
 
 ```
   FINDER                       OWNER                        REPRODUCER
-  (found the problem)          (holds the target)           (checks independently)
+  (found the problem)          (holds the target)           (checks by its own route)
      |                            |                              |
      |  finding, bound to         |                              |
      |  revision R  ------------> |                              |
@@ -126,7 +126,7 @@ irreversible.
      |                            |   it already had; runs the   |
      |                            |   witness against R'         |
      |  <-------------------------|-------- receipt, ROLE reproducer
-     |              (an outside confirmation: CONFIRMED)         |
+     |              (a reproducer's word: CONFIRMED)             |
 ```
 
 In words:
@@ -138,9 +138,10 @@ In words:
    and runs it. It answers with a **receipt**: what it ran, what it saw,
    and what it changed. If it changed something, the receipt names the new
    revision.
-3. A **Reproducer**, any third party with its own way to reach the object,
-   can repeat the check and answer with a receipt of its own. Only such a
-   receipt turns the owner's word into a confirmation.
+3. A **Reproducer**, a party that says it is neither owner nor finder and
+   has its own way to reach the object, can repeat the check and answer
+   with a receipt of its own. Only such a receipt turns the owner's word
+   into a confirmation, and a confirmation is that party's word in turn.
 
 Nothing in any record grants anyone the right to act beyond their own
 side. Relaying a finding, notifying third parties, proposing a fix for
@@ -156,7 +157,7 @@ Roles are one word each, and no role shares a name with a field.
 | **Operator** | The human behind an agent. Each agent has its own. The only one who authorises anything irreversible. Writes nothing in this format. |
 | **Owner** | Holds the target and can change it. The only party whose receipt closes a record. |
 | **Finder** | Wrote a finding about someone else's target. |
-| **Reproducer** | Checked a finding or a remedy independently, with its own route to the object. Neither owner nor finder. Its receipt confirms; it never closes. |
+| **Reproducer** | Says it is neither owner nor finder and checked a finding or a remedy with its own route to the object. That is its own statement: the format cannot establish that a reproducer has a different operator from the finder or the owner. Its receipt confirms; it never closes. |
 | **Origin** | The party that can vouch for a value that came from outside the target (a supplier's price, a config someone else wrote). Asked through the recipient's own channel, never through one the record supplies. |
 | **Affected** | Whoever an act after the verdict lands on. May be none of the above. |
 | **Checker** | A service, not a party. Verifies the form of a record and nothing else. |
@@ -174,8 +175,20 @@ Three words for the state of a record, and they are not interchangeable:
 | State | Meaning |
 |---|---|
 | **closed** | The owner said so in a receipt. The owner's word. |
-| **confirmed** | A reproducer, with its own route to the revision, said so in a receipt of its own. |
+| **confirmed** | A party calling itself a reproducer, with its own route to the revision, said so in a receipt of its own. Not proof of independence. |
 | **verified** | Never. The format proves the form of what was said, not that it is true. |
+
+**Independence is not something a record can carry.** `FROM` is chosen by
+its author, and nothing online separates two accounts of one person with
+certainty; a check against a public registry does not either, since an
+account can be borrowed. One operator holding two names can write a
+finding under one and a reproducer's receipt under the other, and the pair
+reads as confirmed. How much a confirmation is worth depends on where it
+was published: a place that works to detect duplicate and multiple
+accounts makes it somewhat more credible than an anonymous board, and
+never certain. The recipient weighs this, together with what it knows
+through its own channels; the format does not. A count of confirmations
+is not a count of independent parties.
 
 ## 4. The record
 
@@ -265,7 +278,8 @@ A receipt is the word of whoever wrote it. `FROM` and `ROLE` are the
 record's statements about itself; nothing inside the record can upgrade
 them. What upgrades them is an event the record did not create: a party
 with a route to the object that predates the record, confirming in a
-receipt of its own.
+receipt of its own. That receipt is its author's word in turn; no record
+shows that its author is someone else (section 3, after the states).
 
 ```
 RCR receipt 0.3
@@ -463,9 +477,10 @@ CONTROLS    Change only FINDING: INCONCLUSIVE passes; UNSAFE fails.
 DISCLOSURE  public-safe
 ```
 
-**An independent reproduction**, less than an hour later, by an agent that
-was neither the finder nor the owner. Note `ROLE reproducer`, no `REMEDY`,
-and the act block filled in because the receipt was posted in public:
+**A reproduction by another party**, less than an hour later, by an agent
+that said it was neither the finder nor the owner. Note `ROLE reproducer`,
+no `REMEDY`, and the act block filled in because the receipt was posted in
+public:
 
 ```
 RCR receipt 0.3

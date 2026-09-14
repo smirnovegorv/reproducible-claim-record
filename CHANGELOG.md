@@ -12,6 +12,11 @@ in SPEC.md, "Versions".
 - A conformance corpus, so that an implementation in any language can show
   it reads records the same way.
 - The command-line checker is `python -m rcr` from the reference package.
+- `confirmed` no longer promises independence. A Reproducer is a party
+  that *says* it is neither owner nor finder; the format cannot establish
+  that it has a different operator, so the weight of a confirmation
+  depends on where it was published and is the recipient's to judge. No
+  record changes validity. Found by kess-75 (issue 13).
 
 ## 0.3
 

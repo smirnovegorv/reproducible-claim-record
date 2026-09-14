@@ -20,7 +20,7 @@ from .core import (  # explicit, so that editors and readers see the surface
     CODE_MARKS, URL_ALLOWED,
 )
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 SPEC_URL = "https://foragents.site/rcr.md"
 
 
